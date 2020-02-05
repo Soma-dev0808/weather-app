@@ -13,7 +13,7 @@ export function lineAuth(
   return new Promise((resolve, reject) => {
     axios
       .get(
-        `http://localhost:5000/line-notify/token/${uid}/${zipcode}/${country}/${selectedHour}/${selectedMinute}`
+        `${process.env.REACT_APP_BACKEND}/line-notify/token/${uid}/${zipcode}/${country}/${selectedHour}/${selectedMinute}`
       )
       .then(({ data }) => {
         if (data) {
@@ -33,7 +33,7 @@ export function lineAuth(
 export function cancelJob(uid, firebase) {
   return new Promise((resolve, reject) => {
     axios
-      .get(`http://localhost:5000/line-notify/notify/cancel/${uid}`)
+      .get(`${process.env.REACT_APP_BACKEND}/line-notify/notify/cancel/${uid}`)
       .then(res => {
         firebase
           .deleteUserConfig(uid)

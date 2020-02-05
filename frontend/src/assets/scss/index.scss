@@ -30,53 +30,52 @@ code {
 
 .Ash {
   @extend .app-container;
-  background-image: url('../imgs/ash.jpg');
+  background-image: url('/src/assets/imgs/ash.jpg');
 }
 
 .Clouds {
   @extend .app-container;
-  background-image: url('../imgs/clouds.jpg');
+  background-image: url('/src/assets/imgs/clouds.jpg');
 }
 
 .Mist {
   @extend .app-container;
-  background-image: url('../imgs/mist.jpg');
+  background-image: url('/src/assets/imgs/mist.jpg');
 }
 
 .Rain {
   @extend .app-container;
-  background-image: url('../imgs/rain.jpg');
+  background-image: url('/src/assets/imgs/rain.jpg');
 }
 
 .Snow {
   @extend .app-container;
-  background-image: url('../imgs/snow.jpg');
+  background-image: url('/src/assets/imgs/snow.jpg');
 }
 
 .Squall {
   @extend .app-container;
-  background-image: url('../imgs/squall.jpg');
+  background-image: url('/src/assets/imgs/squall.jpg');
 }
 
 .Clear {
   @extend .app-container;
-  background-image: url('../imgs/sunny.jpg');
-
+  background-image: url('/src/assets/imgs/sunny.jpg');
 }
 
 .Thunder {
   @extend .app-container;
-  background-image: url('../imgs/thunder.jpg');
+  background-image: url('/src/assets/imgs/thunder.jpg');
 }
 
 .Tornade {
   @extend .app-container;
-  background-image: url('../imgs/tornado.jpg');
+  background-image: url('/src/assets/imgs/tornado.jpg');
 }
 
 .Sand {
   @extend .app-container;
-  background-image: url('../imgs/sand.jpg');
+  background-image: url('/src/assets/imgs/sand.jpg');
 }
 
 .color-filter {
