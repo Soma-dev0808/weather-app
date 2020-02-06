@@ -1,5 +1,0 @@
-{
-  "./public/manifest.jsonmain.js": "/bundle.js",
-  "./public/manifest.json./index.html": "/./index.html",
-  "./public/manifest.jsonfavicon.ico": "/favicon.ico"
-}
