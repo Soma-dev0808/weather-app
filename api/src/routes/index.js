@@ -26,8 +26,8 @@ app.use(
 app.use(bodyParser.json());
 app.use(cors());
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`server is listening to ${process.env.PORT || 5000}...`);
+app.listen(process.env.PORT || 80, () => {
+  console.log(`server is listening to ${process.env.PORT || 80}...`);
 });
 
 app.use('/line-notify', lineNotifyRouter);

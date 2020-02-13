@@ -11,7 +11,7 @@ const lineSdk = new line_sdk({
 });
 
 router.get(
-  '/token/:uid/:zipcode/:country/:selcetedHour/:selectedMinute',
+  '/token/:uid/:zipcode/:country/:selcetedHour/:selectedMinute/:c/:p',
   (req, res) => {
     try {
       const userId = req.params.uid;
@@ -24,11 +24,22 @@ router.get(
       const hour = Buffer.from(`${selcetedHour}`).toString('base64');
       const selectedMinute = req.params.selectedMinute;
       const minute = Buffer.from(`${selectedMinute}`).toString('base64');
+      const timeZoneCountry = req.params.c;
+      const timeZoneProvince = req.params.p;
+      const timeZoneCountryProvince = timeZoneCountry + '/' + timeZoneProvince;
+      const userTimeZone = Buffer.from(`${timeZoneCountryProvince}`).toString('base64');
       const state = process.env.LINE_NOTIFY_STATE;
-      const url = lineSdk.make_auth_url(state, uid, zcode, country, {
-        hour,
-        minute
-      });
+      const url = lineSdk.make_auth_url(
+                            state, 
+                            uid, 
+                            zcode, 
+                            country, 
+                            {
+                              hour,
+                              minute
+                            },
+                            userTimeZone
+                          );
       res.send(url);
     } catch (err) {
       res.send(err);
@@ -47,7 +58,7 @@ router.get('/notify/cancel/:uid', (req, res) => {
 });
 
 router.get('/callback', (req, res) => {
-  var currentPage = `${process.env.APP_HOST}/notification`;
+  var currentPage = `${process.env.APP_HOST}notification`;
 
   if (req.query.error !== undefined && req.query.error === 'access_denied') {
     res.status(401).redirect(currentPage);
@@ -74,6 +85,7 @@ router.get('/callback', (req, res) => {
     Buffer.from(`${stateParam[5]}`, 'base64').toString('ascii')
   );
 
+  const userTimeZone = Buffer.from(`${stateParam[6]}`, 'base64').toString('ascii');
   if (!code) {
     console.log('Authorization failed.');
     res.status(401).redirect(currentPage);
@@ -92,8 +104,7 @@ router.get('/callback', (req, res) => {
       const accessToken = response.access_token;
 
       // here
-      scheduler(uid, lineSdk, zcode, country, accessToken, { hour, minute });
-
+      scheduler(uid, lineSdk, zcode, country, accessToken, { hour, minute }, userTimeZone);
       const token = md5(`success${accessToken}`);
       res.redirect(currentPage + `?token=${token}`);
     })

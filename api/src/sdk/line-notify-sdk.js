@@ -49,12 +49,12 @@ class LineLogin {
     @method
     @return {String}
     */
-  make_auth_url(state, uid, zipcode, country, { hour, minute }) {
+  make_auth_url(state, uid, zipcode, country, { hour, minute }, userTimeZone) {
     const client_id = encodeURIComponent(this.channel_id);
     const redirect_uri = encodeURIComponent(this.callback_url);
     const scope = encodeURIComponent(this.scope);
     // To attach uid into url
-    state = `${state}.${uid}.${zipcode}.${country}.${hour}.${minute}`;
+    state = `${state}.${uid}.${zipcode}.${country}.${hour}.${minute}.${userTimeZone}`;
     let url = `https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope}&state=${state}`;
     return url;
   }
