@@ -9,13 +9,14 @@ function scheduler(
   zcode,
   country,
   accessToken,
-  { hour, minute }
+  { hour, minute },
+  userTimeZone
 ) {
   try {
     var rule = new schedule.RecurrenceRule();
     rule.hour = hour;
     rule.minute = minute;
-    rule.tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    rule.tz = userTimeZone;
 
     // Use cancel() instead of reschedule because user might be apply different zipcode.
     if (schedules[`${uid}`]) {
