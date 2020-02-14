@@ -62,7 +62,7 @@ You can scan QR code in the picture.
 
 
 
-## App URL
+## If you want to try it out
 
 Please click URL below to access weather-app.
 
@@ -70,29 +70,70 @@ https://soma-dev0808.github.io/weather-demo/notification
 
 
 
-### `npm run build` fails to minify
+## Hot to getting started
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### clone app
 
+git clone https://github.com/Soma-dev0808/weather-app.git
 
-### .env for backend(Node.js)
+###  `npm install` inside api and frontend directly
+
+Please install dependency in both api and frontend directly.
+
+### Create service in LINENotify
+
+Visit https://notify-bot.line.me/my/services/ and create LINENotify service. <br>
+
+Then you can get channel id, channel secret. (You have to use it for .env file) <br>
+
+For the callback url, you can assign  <br>
+
+`http://localhost:{your local host port number}/line-notify/callback` <br>
+
+in your LINENotify service console and .env file.
+
+### Prepare .env file in api directly
 
 APP_HOST=http://localhost:3000
 
-LINE_NOTIFY_CHANNEL_ID=VVjuNUyBMTjsJoeILW8U8J
-LINE_NOTIFY_CHANNEL_SECRET=VPR0tEF6x1tgKbpGUgnlQVIIakfVslhmmC01aFq7O5T
-LINE_NOTIFY_CALLBACK_URL=http://localhost:5000/line-notify/callback
+LINE_NOTIFY_CHANNEL_ID=*********
+LINE_NOTIFY_CHANNEL_SECRET=*********
+LINE_NOTIFY_CALLBACK_URL=*********
 LINE_NOTIFY_STATE=bm90aWZ5U3RhdGUxMjM=
 
-REACT_APP_OPEN_WEATHER_API_KEY=3233ca4eab5a56eec61f123cbc34275a
+REACT_APP_OPEN_WEATHER_API_KEY=*********
+
+
+### Create your project in your firebase console
+
+Then please take a note that firebase config variables.(You need them in .env file) <br>
+
+You can find them inside Project setting and click Config checkmark. <br>
+
+<img src="https://user-images.githubusercontent.com/55787141/74521018-a8237f80-4f53-11ea-8faa-a25451370eca.jpg" width="570" height="300">
+
+
 
 ### .env for frontend(React.js)
-REACT_APP_OPEN_WEATHER_API_KEY=3233ca4eab5a56eec61f123cbc34275a
+REACT_APP_OPEN_WEATHER_API_KEY=*********
 
-## Firebase
-REACT_APP_API_KEY=AIzaSyBZPoGsNjjaef6bkIlNHQ4l5jMwNLgFOGs
-REACT_APP_AUTH_DOMAIN=my-project-290-soma.firebaseapp.com
-REACT_APP_DATABASE_URL=https://my-project-290-soma.firebaseio.com
-REACT_APP_PROJECT_ID=my-project-290-soma
-REACT_APP_STORAGE_BUCKET=my-project-290-soma.appspot.com
-REACT_APP_MESSAGING_SENDER_ID=814944417480
+// Firebase
+REACT_APP_API_KEY=********
+REACT_APP_AUTH_DOMAIN=********
+REACT_APP_DATABASE_URL=********
+REACT_APP_PROJECT_ID=********
+REACT_APP_STORAGE_BUCKET=********
+REACT_APP_MESSAGING_SENDER_ID=********
+
+
+### run `npm run build:dev`
+
+Webpack will build bundle.js for you.
+
+### run `npm run start` in side api and frontend directly
+
+You can run app.
+
+## LICENSE
+
+[MIT LICENSE](https://github.com/Soma-dev0808/weather-app/blob/master/LICENSE)
