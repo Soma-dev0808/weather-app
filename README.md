@@ -1,67 +1,74 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# weather-app
 
-In the project directory, you can run:
+This application allows an user to check current weather, and notify weather info by LINENotify at specific time everyday if it's configured.
+To receive notification, you have to sign up to this app.
+You can see weather info in browser by input zipcode without registration or logging in.
 
-### `npm start`
+<img src="https://user-images.githubusercontent.com/55787141/74496560-fa45b000-4f15-11ea-8a29-eca19641cd13.png" width="570" height="300">
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="https://user-images.githubusercontent.com/55787141/74497208-f581fb80-4f17-11ea-8c7d-f40ce0ddf5db.jpg" width="570" height="300">
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Why I created this app
 
-### `npm run build`
+This app is to show my skill of developing.
+I've been developing frontend and backend(in here, I express nodejs as backend) so far in several projects.
+Since that, I coded frontend and backend for this app.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## What technology I used
 
-### `npm run eject`
+・React.js (Frontend)
+  - React router
+・SCSS (UI designning)
+・Semantic UI React (UI designning)
+・Node.js (Backend)
+・PM2 (To demonize a process)
+・Firebase (Authentication)
+・AWS EC2 (As Production Server)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Since this app's component structure is not complicated, I didin't use Redux.(In most of cases, it just need to pass props to child component.)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Why React.js and Node.js? 
 
-## Learn More
+・React.js
+This app is pretty simple and there's only a few differences between pages(meaning some of component are reusable), so I wanted to create simple and faster App.
+React.js is fast because of the Virtual DOM which is the one of the biggest feature of React.js. Even though sometime we have to change a part of app, it can re-render only changed part. 
+Components make app maintainanceable. We can develope an app with individual compoent. In addition to this, when I found a problem with my code, it's easy to make some changes. Also I reused one component for some situation.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+・Node.js
+The fast server side framework Node.js was matched my portfolio concepts which is fast app. It was also easy to learn and integrate it into app. I created soem API endpoints for LINEnotify and schedule job of notification.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Before start using App
 
-### Analyzing the Bundle Size
+1. If you will using notification function, you need to download LINE from [app store.](https://line.me/en-US/download)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+2. Create account for LINE(Please register your email address).
 
-### Making a Progressive Web App
+3. Add LINENotify as your friend.(LINENotify is the one notify you.)
+![image](https://user-images.githubusercontent.com/55787141/74505415-09d2f200-4f32-11ea-9cca-9d1d4e1090b2.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+You can scan QR code in the picture.
 
-### Advanced Configuration
+4. Now ready to use weather-app.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## App URL
+
+Please click URL below to access weather-app.
+
+https://soma-dev0808.github.io/weather-demo/notification
+
+
 
 ### `npm run build` fails to minify
 
