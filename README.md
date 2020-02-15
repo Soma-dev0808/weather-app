@@ -38,12 +38,13 @@ Since this app's component structure is not complicated, I didin't use Redux.(In
 ## Why React.js and Node.js? 
 
 * React.js <br>
-This app is pretty simple and there's only a few differences between pages(meaning some of component are reusable), so I wanted to create simple and faster App. <br>
+This app is pretty simple and there's only a few differences between pages(meaning some of components are reusable), so I wanted to create simple and faster App using components and SPA. <br>
 React.js is fast because of the Virtual DOM which is the one of the biggest feature of React.js. Even though sometime we have to change a part of app, it can re-render only changed part. <br> 
-Components make app maintainanceable. We can develope an app with individual compoent. In addition to this, when I found a problem with my code, it's easy to make some changes. Also I reused one component for some situation. <br>
+Also components make app maintainanceable. We can develope an app with individual compoent. Asa result, when I found a problem with my code, it's easy to make some changes. Also I reused one component for some situation. <br>
 
 * Node.js <br>
-The fast server side framework Node.js was matched my portfolio concepts which is fast app. It was also easy to learn and integrate it into app. I created soem API endpoints for LINEnotify and schedule job of notification. <br>
+The fast server side framework Node.js was matched my portfolio concept because the api call is pretty simple, and need to be fast. <br>
+It was also easy to learn and integrate it into app. I created some API endpoints for LINEnotify and schedule job for notification method. <br>
 
 
 
@@ -51,7 +52,7 @@ The fast server side framework Node.js was matched my portfolio concepts which i
 
 1. If you will using notification function, you need to download LINE from [app store.](https://line.me/en-US/download)
 
-2. Create account for LINE(Please register your email address).
+2. Create an account for LINE(Please register your email address).
 
 3. Add LINENotify as your friend.(LINENotify is the one notify you.)
 ![image](https://user-images.githubusercontent.com/55787141/74505415-09d2f200-4f32-11ea-9cca-9d1d4e1090b2.png)
@@ -96,19 +97,19 @@ in your LINENotify service console and .env file.
 
 APP_HOST=http://localhost:3000
 
-LINE_NOTIFY_CHANNEL_ID=*********
-LINE_NOTIFY_CHANNEL_SECRET=*********
-LINE_NOTIFY_CALLBACK_URL=*********
-LINE_NOTIFY_STATE=bm90aWZ5U3RhdGUxMjM=
+LINE_NOTIFY_CHANNEL_ID=********* <br>
+LINE_NOTIFY_CHANNEL_SECRET=********* <br>
+LINE_NOTIFY_CALLBACK_URL=********* <br>
+LINE_NOTIFY_STATE=bm90aWZ5U3RhdGUxMjM= <br>
 
-REACT_APP_OPEN_WEATHER_API_KEY=*********
+REACT_APP_OPEN_WEATHER_API_KEY=********* <br>
 
 
 ### Create your project in your firebase console
 
-Then please take a note that firebase config variables.(You need them in .env file) <br>
+Please take a note that firebase config variables.(You need them in .env file) <br>
 
-You can find them inside Project setting and click Config checkmark. <br>
+You can find them inside 'Project setting' in firebase console and click 'Config' checkmark. <br>
 
 <img src="https://user-images.githubusercontent.com/55787141/74521018-a8237f80-4f53-11ea-8faa-a25451370eca.jpg" width="570" height="300">
 
@@ -117,13 +118,13 @@ You can find them inside Project setting and click Config checkmark. <br>
 ### .env for frontend(React.js)
 REACT_APP_OPEN_WEATHER_API_KEY=*********
 
-// Firebase
-REACT_APP_API_KEY=********
-REACT_APP_AUTH_DOMAIN=********
-REACT_APP_DATABASE_URL=********
-REACT_APP_PROJECT_ID=********
-REACT_APP_STORAGE_BUCKET=********
-REACT_APP_MESSAGING_SENDER_ID=********
+// Firebase <br>
+REACT_APP_API_KEY=******** <br> 
+REACT_APP_AUTH_DOMAIN=******** <br>
+REACT_APP_DATABASE_URL=******** <br>
+REACT_APP_PROJECT_ID=******** <br>
+REACT_APP_STORAGE_BUCKET=******** <br>
+REACT_APP_MESSAGING_SENDER_ID=******** <br>
 
 
 ### run `npm run build:dev`
