@@ -95,7 +95,7 @@ in your LINENotify service console and .env file.
 
 ### Prepare .env file in api directly
 
-APP_HOST=http://localhost:3000
+APP_HOST=http://localhost:8080/
 
 LINE_NOTIFY_CHANNEL_ID=********* <br>
 LINE_NOTIFY_CHANNEL_SECRET=********* <br>
