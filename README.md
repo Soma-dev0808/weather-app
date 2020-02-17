@@ -21,7 +21,7 @@ I've been developing a web application and mobile application uging some languag
 
 This application was developed using React.js and Node.js which helps to show my developing skill for frontend and backend. In the node.js side, I created some entrypoints to handle some functions such as connecting with LINENotify. <br>
 
-I also have some experience with using could platform, threfore I integrated firebase for authentication and AWS for managing production server.
+I also have some experience with using cloud platform, threfore I integrated firebase for authentication and AWS for managing production server.
 
 
 ## What technology I used
