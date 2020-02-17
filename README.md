@@ -1,6 +1,6 @@
 # weather-app
 
-This application allows a user to check the current weather, and notifies him/her about the weather information by LINENotify at a specific time everyday if it's configured.
+This application allows a user to check the current weather, and notifies a user about the weather information by LINENotify at a specific time everyday if it's configured.
 
 To be able to receive notification, you have to register/login to this app.
 
@@ -17,12 +17,11 @@ You can see weather information in browser by inputting zipcode without registra
 
 ## Why I created this app
 
-This app is to show my skill of developing. <br>
-I've been developing a web application and mobile application uging some languages such as React.js and NativeScript. Threfore I wanted to show my skill with this application. <br>
+This app was mainly created to show my skill in both web and mobile development. I've used some languages such as React.js and Nativescript, therefore showing the level of skill I have with these languages.
 
-This application was developed using React.js and Node.js which helps to show my developing skill for frontend and backend. In the node.js side, I created some entrypoints to handle some functions such as connecting with LINENotify. <br>
+Both React.js and Node.js are skills used to develop both frontend and backend development.  In the node.js side, I created some entrypoints to handle some functions such as connecting with LINENotify.
 
-I also have some experience with using cloud platform, threfore I integrated firebase for authentication and AWS for managing production server.
+I also have some experience with using Cloud platform, threfore I integrated firebase for authentication and AWS for managing production server.
 
 
 ## What technology I used
@@ -62,16 +61,16 @@ Since this app's component structure is not complicated, I didin't use Redux.(In
 
 ## Before start using App
 
-1. If you will using notification function, you need to download LINE from [app store.](https://line.me/en-US/download)
+1. If you will be using notification function, you need to download LINE from [app store.](https://line.me/en-US/download)
 
-2. Create an account for LINE(Please register your email address).
+2. Create an account for LINE by registering your email address.
 
-3. Add LINENotify as your friend.(LINENotify is the one notify you.)
+3. Add LINENotify as your friend.(LINENotify will notify you once added.)
 ![image](https://user-images.githubusercontent.com/55787141/74505415-09d2f200-4f32-11ea-9cca-9d1d4e1090b2.png)
 
 You can scan QR code in the picture.
 
-4. Now ready to use weather-app.
+4. Weather-app is now ready to use! 
 
 
 
