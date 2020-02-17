@@ -20,8 +20,10 @@ You can see weather information in browser by inputting zipcode without registra
 
 This app is to show my skill of developing. <br>
 I've been developing a web application and mobile application uging some languages such as React.js and NativeScript. Threfore I wanted to show my skill with this application. <br>
+
 This application was developed using React.js and Node.js which helps to show my developing skill for frontend and backend. In the node.js side, I created some entrypoints to handle some functions such as connecting with LINENotify. <br>
-I also have some experience with using could platform, so I integrated firebase for authentication and AWS for managing production server.
+
+I also have some experience with using could platform, threfore I integrated firebase for authentication and AWS for managing production server.
 
 
 ## What technology I used
@@ -57,6 +59,7 @@ Since this app's component structure is not complicated, I didin't use Redux.(In
  * Connect LINENotify
  * Send notification 
  * Stop sending notification
+
 
 ## Before start using App
 
