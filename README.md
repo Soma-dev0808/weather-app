@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # weather-app
 
-This application allows an user to check current weather, and notify weather info by LINENotify at specific time everyday if it's configured. <br>
+This application allows an user to check current weather, and notify weather information by LINENotify at specific time everyday if it's configured. <br>
 To receive notification, you have to sign up to this app. <br>
 You can see weather info in browser by input zipcode without registration or logging in. <br>
 Currently, this application supports for four countries to fetch weather information. (USA, Germany, Thailand, Singapore)
