@@ -15,9 +15,9 @@ You can see weather info in browser by input zipcode without registration or log
 ## Why I created this app
 
 This app is to show my skill of developing. <br>
-I've been developing frontend and backend(in here, I express nodejs as backend) so far in several projects. <br>
-Since that, I coded frontend and backend for this app. <br>
-
+I've been developing a web application and mobile application uging some languages such as React.js and NativeScript. Threfore I wanted to show my skill with this application. <br>
+This application was developed using React.js and Node.js which helps to show my developing skill for frontend and backend. In the node.js side, I created some entrypoints to handle some functions such as connecting with LINENotify. <br>
+I also have some experience with using could platform, so I integrated firebase for authentication and AWS for managing production server.
 
 
 ## What technology I used
@@ -30,21 +30,18 @@ Since that, I coded frontend and backend for this app. <br>
 * PM2 (To demonize a process)
 * Firebase (Authentication)
 * AWS EC2 (As Production Server)
+  - Route53
+  - Elastic IP
+  - Loadbalancer
+  * VPC is default VPC
+  
+Since this app's component structure is not complicated, I didin't use Redux.(In most of cases, it just need to pass props to child component in this app.)
 
-Since this app's component structure is not complicated, I didin't use Redux.(In most of cases, it just need to pass props to child component.)
 
 
+## Structure of this application.
 
-## Why React.js and Node.js? 
-
-* React.js <br>
-This app is pretty simple and there's only a few differences between pages(meaning some of components are reusable), so I wanted to create simple and faster App using components and SPA. <br>
-React.js is fast because of the Virtual DOM which is the one of the biggest feature of React.js. Even though sometime we have to change a part of app, it can re-render only changed part. <br> 
-Also components make app maintainanceable. We can develope an app with individual compoent. Asa result, when I found a problem with my code, it's easy to make some changes. Also I reused one component for some situation. <br>
-
-* Node.js <br>
-The fast server side framework Node.js was matched my portfolio concept because the api call is pretty simple, and need to be fast. <br>
-It was also easy to learn and integrate it into app. I created some API endpoints for LINEnotify and schedule job for notification method. <br>
+![image](https://user-images.githubusercontent.com/55787141/74638441-d9e05480-51a6-11ea-8653-20280098e5b4.png)
 
 
 
