@@ -1,12 +1,13 @@
 # weather-app
 
-This application allows an user to check current weather, and notify weather information by LINENotify at specific time everyday if it's configured. <br>
+This application allows a user to check the current weather, and notifies him/her about the weather information by LINENotify at a specific time everyday if it's configured.
 
-To receive notification, you have to register/login to this app. <br>
+To be able to receive notification, you have to register/login to this app.
 
-You can see weather information in browser by inputting zipcode without registration or login. <br>
+You can see weather information in browser by inputting zipcode without registration or login.
 
-:earth_asia: Currently, this application supports for four countries to fetch weather information. (USA, Germany, Thailand, Singapore)
+🌏 Currently, this application supports four countries (USA, Germany, Thailand, Singapore)
+ to fetch weather information.
 
 <img src="https://user-images.githubusercontent.com/55787141/74496560-fa45b000-4f15-11ea-8a29-eca19641cd13.png" width="570" height="300">
 
