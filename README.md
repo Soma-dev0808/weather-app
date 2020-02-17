@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This application allows an user to check current weather, and notify weather info by LINENotify at specific time everyday if it's configured. <br>
 To receive notification, you have to sign up to this app. <br>
 You can see weather info in browser by input zipcode without registration or logging in. <br>
+Currently, this application supports for four countries to fetch weather information. (USA, Germany, Thailand, Singapore)
 
 <img src="https://user-images.githubusercontent.com/55787141/74496560-fa45b000-4f15-11ea-8a29-eca19641cd13.png" width="570" height="300">
 
@@ -45,6 +46,15 @@ Since this app's component structure is not complicated, I didin't use Redux.(In
 
 
 
+## Feature 
+
+ * Display current weather by inputting zipcode
+ * Registration/Login/Signout account
+ * Restore password
+ * Connect LINENotify
+ * Send notification 
+ * Stop sending notification
+
 ## Before start using App
 
 1. If you will using notification function, you need to download LINE from [app store.](https://line.me/en-US/download)
@@ -64,8 +74,7 @@ You can scan QR code in the picture.
 
 Please click URL below to access weather-app.
 
-https://soma-dev0808.github.io/weather-demo/notification
-
+https://soma-dev0808.github.io/weather-demo/
 
 
 ## Hot to getting started
