@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # weather-app
 
 This application allows an user to check current weather, and notify weather information by LINENotify at specific time everyday if it's configured. <br>
