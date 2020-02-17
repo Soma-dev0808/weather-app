@@ -89,7 +89,7 @@ Then you can get channel id, channel secret. (You have to use it for .env file) 
 
 For the callback url, you can assign  <br>
 
-`http://localhost:{your local host port number}/line-notify/callback` <br>
+`http://localhost:{your nodejs's local host port number}/line-notify/callback` <br>
 
 in your LINENotify service console and .env file.
 
@@ -125,6 +125,9 @@ REACT_APP_DATABASE_URL=******** <br>
 REACT_APP_PROJECT_ID=******** <br>
 REACT_APP_STORAGE_BUCKET=******** <br>
 REACT_APP_MESSAGING_SENDER_ID=******** <br>
+
+//Backend
+REACT_APP_BACKEND=http://localhost:5000
 
 
 ### run `npm run build:dev`
