@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { withFirebase } from '../../config';
-import { lineAuth, cancelJob } from '../../API_Caller/apiService';
-import { Dropdown } from 'semantic-ui-react';
-import Modal from '../ModalComponent/Modal';
-import Loading from '../LoadingComponent/Loading';
-import SmLoading from '../LoadingComponent/smLoading';
-import moment from 'moment-timezone';
+import React, { useState, useEffect } from "react";
+import { withFirebase } from "../../config";
+import { useDispatch, useSelector } from "react-redux";
+import * as action from "../store/actionCreator";
+import { lineAuth, cancelJob } from "../../API_Caller/apiService";
+import { Dropdown } from "semantic-ui-react";
+import Modal from "../ModalComponent/Modal";
+import Loading from "../LoadingComponent/Loading";
+import SmLoading from "../LoadingComponent/smLoading";
+import moment from "moment-timezone";
 
 /**
  *
@@ -48,9 +50,9 @@ function WeatherInput({
   userId,
   firebase
 }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedHour, setSelectedHour] = useState('');
-  const [selectedMinute, setSelectedMinute] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedHour, setSelectedHour] = useState("");
+  const [selectedMinute, setSelectedMinute] = useState("");
 
   // Data user set
   const [sendNotifyConfig, setSendNotifyConfig] = useState(true);
@@ -60,8 +62,8 @@ function WeatherInput({
   const [didFoundZipCode, setdidFoundZipCode] = useState(true);
 
   // For result from api calls
-  const [resForCancel, setResForCancel] = useState('');
-  const [error, setError] = useState('');
+  const [resForCancel, setResForCancel] = useState("");
+  const [error, setError] = useState("");
 
   // Loading indicator
   const [isLoading, setIsLoading] = useState(false);
@@ -69,52 +71,39 @@ function WeatherInput({
 
   // state for a country user choose
   const [isSG, setIsSG] = useState(false);
-  const [checkedItem, setCheckedItem] = useState('us');
+  const [checkedItem, setCheckedItem] = useState("us");
 
   // User config for weather notification
-  const [saveConfig, setSaveConfig] = useState('');
-  const [userConfig, setUserConfig] = useState('');
+  const [saveConfig, setSaveConfig] = useState("");
+  const [userConfig, setUserConfig] = useState("");
 
   // Modal
   const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
+  const [modalTitle, setModalTitle] = useState("");
   const [isSubmit, setIsSubmit] = useState(true);
+
+  const dispatch = useDispatch();
+  const weatherConfig = useSelector(({ appState }) => appState.weatherConfig);
 
   // Fetch user weather config
   useEffect(() => {
-    setIsSmLoading(true);
-    var localData = JSON.parse(localStorage.getItem('weatherConfig'));
-    if (!!localData) {
-      setIsSmLoading(false);
-      setUserConfig(localData);
-    } else {
-      firebase
-        .getUserConfig(userId)
-        .then(data => {
-          setUserConfig(data);
-        })
-        .catch(err => {
-          localData = JSON.parse(localStorage.getItem('weatherConfig'));
-          setUserConfig(localData ? localData : '');
-        });
-      setIsSmLoading(false);
-    }
-  }, [userId, firebase]);
+    setUserConfig(weatherConfig);
+  }, [weatherConfig]);
 
   // When user type zipcode
   function updateSearchQuery({ target: { value } }) {
     setSearchQuery(value);
-    setIsValidZipCode(validateZipCode(value) || value === '');
+    setIsValidZipCode(validateZipCode(value) || value === "");
     setdidFoundZipCode(true);
   }
 
   // When user choose country
   function handleCheckbox({ target: { name } }) {
     setCheckedItem(name);
-    if (name === 'sg') {
+    if (name === "sg") {
       setIsSG(true);
       setIsValidZipCode(true);
-      setSearchQuery('');
+      setSearchQuery("");
     } else {
       setIsSG(false);
     }
@@ -125,11 +114,11 @@ function WeatherInput({
     setIsLoading(true);
 
     // when zipcode is empty
-    if (searchQuery === '' && !isSG) {
+    if (searchQuery === "" && !isSG) {
       setIsLoading(false);
-      setError('Please Input Zipcode');
+      setError("Please Input Zipcode");
       setTimeout(() => {
-        setError('');
+        setError("");
       }, 2000);
       return;
     }
@@ -141,7 +130,7 @@ function WeatherInput({
     }
 
     // Fetching weather data
-    let response = '';
+    let response = "";
 
     if (isSG) {
       // Fetching weather data for singapore
@@ -162,7 +151,7 @@ function WeatherInput({
     const { main, weather, name } = await response.json();
 
     // For displaying weather info in browser.
-    if (funcFor === 'forDisplaying') {
+    if (funcFor === "forDisplaying") {
       setWeatherData({
         tempF: convertToFarenheit(main.temp),
         tempC: convertToCelsius(main.temp),
@@ -173,29 +162,30 @@ function WeatherInput({
 
       // This will update background color of page
       let status = weather[0].main;
-      let drizzle = ['Drizzle', 'Mist'];
-      let smoke = ['Sand', 'Haze', 'Dust', 'Fog', 'Smoke', 'Dust'];
+      let drizzle = ["Drizzle", "Mist"];
+      let smoke = ["Sand", "Haze", "Dust", "Fog", "Smoke", "Dust"];
 
       if (drizzle.includes(status)) {
-        status = 'Mist';
+        status = "Mist";
       }
 
       if (smoke.includes(status)) {
-        status = 'Sand';
+        status = "Sand";
       }
 
-      weatherStatus('app-container ' + status);
+      // Change background image based on the weather
+      weatherStatus("app-container " + status);
     }
     // For notification
     else {
       // When user haven't set time(hour)
-      if (selectedHour === '') {
+      if (selectedHour === "") {
         setSelectedHour(false);
         setIsLoading(false);
         return;
       }
       // When user haven't set time(minute)
-      if (selectedMinute === '') {
+      if (selectedMinute === "") {
         setSelectedMinute(false);
         setIsLoading(false);
         return;
@@ -206,13 +196,13 @@ function WeatherInput({
       );
 
       const country =
-        checkedItem === 'us'
-          ? 'USA'
-          : checkedItem === 'de'
-          ? 'Germany'
-          : checkedItem === 'th'
-          ? 'Thailand'
-          : 'Singapore';
+        checkedItem === "us"
+          ? "USA"
+          : checkedItem === "de"
+          ? "Germany"
+          : checkedItem === "th"
+          ? "Thailand"
+          : "Singapore";
 
       // after user click ok on moda, this state will be stored in localstorage
       setSaveConfig({
@@ -238,17 +228,22 @@ function WeatherInput({
     const secondParam = isSG ? 65 : searchQuery;
 
     // This is used to display user weather config
-    localStorage.setItem('preWeatherConfig', JSON.stringify(saveConfig));
+    localStorage.setItem("preWeatherConfig", JSON.stringify(saveConfig));
 
     // login to linenotify and set cron job
-    lineAuth(uid, secondParam, checkedItem, { selectedHour, selectedMinute }, userTimeZone)
+    lineAuth(
+      uid,
+      secondParam,
+      checkedItem,
+      { selectedHour, selectedMinute },
+      userTimeZone
+    )
       .then(res => {
         window.location.href = res;
       })
       .catch(err => {
-        console.log(err);
         setIsLoading(false);
-        setError('Someting went wrong.... Please try it again');
+        setError("Someting went wrong.... Please try it again");
       });
   }
 
@@ -256,7 +251,7 @@ function WeatherInput({
   function stopNotification() {
     setSendNotifyConfig(false);
     setIsSubmit(false);
-    setModalTitle('Do you want to stop notification?');
+    setModalTitle("Do you want to stop notification?");
     handleOpenModal();
   }
 
@@ -268,10 +263,10 @@ function WeatherInput({
     // stop cron job and delete user weather config in firestore
     cancelJob(uid, firebase)
       .then(({ data }) => {
-        if (data === 'Success') {
-          localStorage.clear();
-          setResForCancel('Successfully stopped!');
-          setUserConfig('');
+        if (data === "Success") {
+          setResForCancel("Successfully stopped!");
+          dispatch(action.removeWeatherConfig());
+          setUserConfig("");
           firebase
             .getUserConfig(userId)
             .then()
@@ -281,12 +276,12 @@ function WeatherInput({
         }
         setIsLoading(false);
         setTimeout(() => {
-          setResForCancel('');
+          setResForCancel("");
         }, 3000);
         return;
       })
       .catch(err => {
-        console.log(err);
+        return;
       });
   }
 
@@ -296,7 +291,7 @@ function WeatherInput({
 
     for (var i = 0; i <= 23; i++) {
       if (i < 10) {
-        i = '0' + i;
+        i = "0" + i;
       }
       timeListArray.push({
         key: `${i}`,
@@ -311,7 +306,7 @@ function WeatherInput({
   // Create list of minute for dropdown
   function getMinute() {
     let timeListArray = [];
-    let list = ['00', '15', '30', '45'];
+    let list = ["00", "15", "30", "45"];
 
     for (var i = 0; i <= list.length - 1; i++) {
       timeListArray.push({
@@ -372,7 +367,7 @@ function WeatherInput({
                 id="us"
                 name="us"
                 onChange={handleCheckbox}
-                checked={checkedItem === 'us'}
+                checked={checkedItem === "us"}
               />
               <span></span>
             </label>
@@ -386,7 +381,7 @@ function WeatherInput({
                 id="de"
                 name="de"
                 onChange={handleCheckbox}
-                checked={checkedItem === 'de'}
+                checked={checkedItem === "de"}
               />
               <span></span>
             </label>
@@ -400,7 +395,7 @@ function WeatherInput({
                 id="th"
                 name="th"
                 onChange={handleCheckbox}
-                checked={checkedItem === 'th'}
+                checked={checkedItem === "th"}
               />
               <span></span>
             </label>
@@ -414,7 +409,7 @@ function WeatherInput({
                 id="sg"
                 name="sg"
                 onChange={handleCheckbox}
-                checked={checkedItem === 'sg'}
+                checked={checkedItem === "sg"}
               />
               <span></span>
             </label>
@@ -427,17 +422,17 @@ function WeatherInput({
         )}
         {isSG ? (
           <p>
-            API supports only one location for singapore.{' '}
+            API supports only one location for singapore.{" "}
             {forNotify
-              ? 'You can just set time to be notified :).'
-              : 'Please click search icon to see weather.'}
+              ? "You can just set time to be notified :)."
+              : "Please click search icon to see weather."}
           </p>
         ) : (
-          ''
+          ""
         )}
         <div className="input-zipcode-box">
           <input
-            placeholder={isSG ? 'Singapore' : 'Zip Code'}
+            placeholder={isSG ? "Singapore" : "Zip Code"}
             className="search-input"
             onChange={updateSearchQuery}
             maxLength="5"
@@ -446,20 +441,20 @@ function WeatherInput({
           />
 
           {forNotify ? (
-            ''
+            ""
           ) : (
             <button
               className="material-icons"
-              onClick={() => getWeatherData('forDisplaying')}
+              onClick={() => getWeatherData("forDisplaying")}
               type="button"
             >
               search
             </button>
           )}
         </div>
-        <p className="error">{isValidZipCode ? '' : 'Invalid Zip Code'}</p>
-        <p className="error">{didFoundZipCode ? '' : 'Cannot find Zip Code'}</p>
-        <p className="error">{error ? error : ''}</p>
+        <p className="error">{isValidZipCode ? "" : "Invalid Zip Code"}</p>
+        <p className="error">{didFoundZipCode ? "" : "Cannot find Zip Code"}</p>
+        <p className="error">{error ? error : ""}</p>
       </header>
       {forNotify ? (
         <div className="notify-container">
@@ -484,26 +479,26 @@ function WeatherInput({
 
           <p className="error">
             {selectedHour === false || selectedMinute === false
-              ? 'Please select time for notifying'
-              : ''}
+              ? "Please select time for notifying"
+              : ""}
           </p>
 
           <div className="notification-button-container">
             <button
               className="btnMine notifyBtn"
-              onClick={() => getWeatherData('forNotify')}
+              onClick={() => getWeatherData("forNotify")}
             >
               Connect with LineNotify
             </button>
 
-            <div>{isSmLoading ? <SmLoading /> : ''}</div>
+            <div>{isSmLoading ? <SmLoading /> : ""}</div>
 
             {userConfig ? (
               <>
                 <div>
                   <p>Your current notification setting</p>
                   <p>
-                    <span>{userConfig.country}</span> {userConfig.hour} :{' '}
+                    <span>{userConfig.country}</span> {userConfig.hour} :{" "}
                     {userConfig.min}
                   </p>
                 </div>
@@ -513,24 +508,24 @@ function WeatherInput({
                 </button>
               </>
             ) : (
-              ''
+              ""
             )}
           </div>
         </div>
       ) : (
-        ''
+        ""
       )}
 
       <div className="success-width">
         <p
           className={
-            resForCancel === 'Successfully stopped!' ? 'success' : 'error'
+            resForCancel === "Successfully stopped!" ? "success" : "error"
           }
         >
           {resForCancel}
         </p>
       </div>
-      {isLoading ? <Loading isLoading={isLoading} /> : ''}
+      {isLoading ? <Loading isLoading={isLoading} /> : ""}
     </>
   );
 }

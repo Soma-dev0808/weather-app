@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import WeatherInfo from '../WeatherComponents/WeatherInfo';
-import WeatherInput from '../WeatherComponents/WeatherInput';
-import GetWeatherButton from '../ButtonComponents/GetWeatherButton';
+import React, { useState } from "react";
+import WeatherInfo from "../WeatherComponents/WeatherInfo";
+import WeatherInput from "../WeatherComponents/WeatherInput";
+import GetWeatherButton from "../ButtonComponents/GetWeatherButton";
 
 function WeatherPage(props) {
   const { weatherStatus } = props;
@@ -32,9 +32,9 @@ function WeatherPage(props) {
         <p className="del-mg-bottom">Do you want to get daily weather info?</p>
         <p className="del-mg-bottom">↓</p>
 
-      <div>
-        <GetWeatherButton props={props} />
-      </div>
+        <div>
+          <GetWeatherButton props={props} />
+        </div>
       </section>
     </section>
   );
