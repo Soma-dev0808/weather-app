@@ -1,5 +1,19 @@
 # weather-app
 
+
+### [Demo](https://soma-dev0808.github.io/weather-demo/)
+***Sample Zipcodes***
+ * US
+   * 50401
+ * Germany
+   * 21149
+ * Thailand
+   * 10110
+ 
+ <hr>
+
+## About this app:
+
 This application allows a user to check the current weather, and notifies a user about the weather information by LINENotify at a specific time everyday if it's configured.
 
 To be able to receive notification, you have to register/login to this app.
