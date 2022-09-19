@@ -2,6 +2,9 @@
 
 
 ### [Demo](https://soma-dev0808.github.io/weather-demo/)
+
+🚨Accessing Linenotify is disabled from Canada. Sorry for that.
+
 ***Sample Zipcodes***
  * US
    * 50401
